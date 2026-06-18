@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第 5 章｜植物體的生長發育 — 重點整理</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@400;700&display=swap');
+
+  :root {
+    --green-dark: #2d6a4f;
+    --green-mid: #52b788;
+    --green-light: #b7e4c7;
+    --green-pale: #d8f3dc;
+    --accent-gold: #e9c46a;
+    --accent-coral: #e76f51;
+    --accent-teal: #4cc9a0;
+    --bg: #f7faf8;
+    --surface: #ffffff;
+    --text: #1a2e22;
+    --text-soft: #4a6558;
+    --border: #c8e6d0;
+    --shadow: rgba(45, 106, 79, 0.08);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Noto Sans TC', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.8;
+    font-size: 15px;
+  }
+
+  /* ── Header ── */
+  header {
+    background: linear-gradient(135deg, var(--green-dark) 0%, #1b4332 100%);
+    color: white;
+    padding: 48px 32px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute; top: -60px; right: -60px;
+    width: 240px; height: 240px;
+    background: rgba(82,183,136,0.18);
+    border-radius: 50%;
+  }
+  header::after {
+    content: '';
+    position: absolute; bottom: -40px; left: 30%;
+    width: 160px; height: 160px;
+    background: rgba(82,183,136,0.1);
+    border-radius: 50%;
+  }
+  .chapter-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--green-mid);
+    color: white; font-weight: 700; font-size: 13px;
+    padding: 4px 14px; border-radius: 20px;
+    margin-bottom: 16px; letter-spacing: 1px;
+  }
+  header h1 {
+    font-family: 'Noto Serif TC', serif;
+    font-size: clamp(28px, 5vw, 48px);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 12px;
+    position: relative;
+  }
+  header p {
+    color: var(--green-light);
+    font-size: 14px;
+    position: relative;
+  }
+
+  /* ── TOC ── */
+  .toc {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin: 32px auto;
+    max-width: 900px;
+  }
+  .toc h2 {
+    font-size: 13px; font-weight: 700; letter-spacing: 2px;
+    color: var(--green-dark); text-transform: uppercase;
+    margin-bottom: 14px; display: flex; align-items: center; gap: 8px;
+  }
+  .toc h2::before { content: '▶'; font-size: 10px; }
+  .toc-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 8px;
+  }
+  .toc a {
+    color: var(--text-soft); text-decoration: none; font-size: 14px;
+    padding: 6px 10px; border-radius: 6px;
+    transition: background 0.15s, color 0.15s;
+    display: block;
+  }
+  .toc a:hover { background: var(--green-pale); color: var(--green-dark); }
+
+  /* ── Main layout ── */
+  main { max-width: 900px; margin: 0 auto; padding: 0 20px 60px; }
+
+  /* ── Sections ── */
+  .section {
+    background: var(--surface);
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    margin-bottom: 28px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px var(--shadow);
+  }
+
+  .section-header {
+    padding: 20px 28px;
+    display: flex; align-items: center; gap: 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  .section-num {
+    width: 44px; height: 44px; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Noto Serif TC', serif;
+    font-size: 18px; font-weight: 700; flex-shrink: 0;
+  }
+  .s1 .section-num { background: #d8f3dc; color: #1b4332; }
+  .s2 .section-num { background: #fff3cd; color: #7c5200; }
+  .s3 .section-num { background: #d0e8ff; color: #1a3d6b; }
+  .s4 .section-num { background: #fce4ec; color: #880e4f; }
+
+  .section-header h2 {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 19px; font-weight: 700; color: var(--text);
+  }
+  .section-header .tag {
+    margin-left: auto; font-size: 11px; font-weight: 500;
+    padding: 3px 10px; border-radius: 20px;
+    background: var(--green-pale); color: var(--green-dark); white-space: nowrap;
+  }
+
+  .section-body { padding: 24px 28px; }
+
+  /* ── Subsections ── */
+  .subsection { margin-bottom: 28px; }
+  .subsection:last-child { margin-bottom: 0; }
+  .subsection-title {
+    font-size: 14px; font-weight: 700; letter-spacing: 1px;
+    color: var(--green-dark);
+    border-left: 3px solid var(--green-mid);
+    padding-left: 10px; margin-bottom: 14px;
+  }
+
+  /* ── Cards ── */
+  .card-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px; margin-bottom: 16px;
+  }
+  .card {
+    border: 1px solid var(--border); border-radius: 10px;
+    padding: 16px; background: var(--bg);
+  }
+  .card-title {
+    font-size: 13px; font-weight: 700; color: var(--green-dark);
+    margin-bottom: 8px; display: flex; align-items: center; gap: 6px;
+    flex-wrap: wrap;
+  }
+  .card-title .dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--green-mid); flex-shrink: 0;
+  }
+  .card p, .card li { font-size: 13.5px; color: var(--text-soft); }
+  .card ul { padding-left: 16px; }
+  .card li { margin-bottom: 3px; }
+
+  /* ── Compare table ── */
+  .compare-table {
+    width: 100%; border-collapse: collapse; font-size: 13.5px;
+    margin-bottom: 16px; border-radius: 8px; overflow: hidden;
+  }
+  .compare-table th {
+    background: var(--green-dark); color: white;
+    padding: 10px 14px; text-align: left; font-weight: 600;
+  }
+  .compare-table td {
+    padding: 9px 14px; border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  .compare-table tr:last-child td { border-bottom: none; }
+  .compare-table tr:nth-child(even) td { background: var(--bg); }
+  .compare-table .label { font-weight: 600; color: var(--green-dark); }
+
+  /* ── Highlight box ── */
+  .highlight-box {
+    background: linear-gradient(135deg, #fff9e6, #fffbe8);
+    border-left: 4px solid var(--accent-gold);
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px; margin: 14px 0;
+    font-size: 13.5px; color: #5c4200;
+  }
+  .highlight-box strong { color: #7c5200; }
+
+  .info-box {
+    background: #eef8f3; border: 1px solid var(--green-light);
+    border-radius: 8px; padding: 14px 18px; margin: 14px 0;
+    font-size: 13.5px; color: var(--text-soft);
+  }
+  .info-box strong { color: var(--green-dark); }
+
+  /* ── List ── */
+  .content-list { list-style: none; padding: 0; }
+  .content-list li {
+    padding: 7px 0 7px 20px; position: relative;
+    font-size: 14px; border-bottom: 1px dashed var(--border);
+    color: var(--text-soft);
+  }
+  .content-list li:last-child { border-bottom: none; }
+  .content-list li::before {
+    content: ''; position: absolute; left: 0; top: 17px;
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--green-mid);
+  }
+  .content-list li strong { color: var(--text); font-weight: 600; }
+
+  /* ── Info rows ── */
+  .info-row {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 6px 12px;
+    font-size: 13.5px;
+    margin-bottom: 6px;
+    align-items: start;
+    color: var(--text-soft);
+  }
+  .info-row .label {
+    font-weight: 700;
+    color: var(--green-dark);
+    padding-top: 1px;
+  }
+
+  /* ── Hormone badge ── */
+  .hormone-badge {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 20px;
+    letter-spacing: 0.04em;
+    flex-shrink: 0;
+  }
+  .badge-green  { background: var(--green-pale); color: var(--green-dark); }
+  .badge-blue   { background: #e3f2fd; color: #1565c0; }
+  .badge-orange { background: #fff3e0; color: #e65100; }
+  .badge-red    { background: #fce4ec; color: #880e4f; }
+  .badge-purple { background: #ede7f6; color: #4527a0; }
+
+  /* ── Sub-label inside section body ── */
+  .func-label {
+    font-size: 13px; font-weight: 700; color: var(--green-dark);
+    margin: 14px 0 6px;
+  }
+
+  /* ── Points list ── */
+  ul.points {
+    padding-left: 18px;
+    font-size: 13.5px;
+    color: var(--text-soft);
+    margin-bottom: 8px;
+  }
+  ul.points li { margin-bottom: 4px; }
+  ul.points li strong { color: var(--text); }
+
+  /* ── Interact table ── */
+  .interact-table {
+    width: 100%; border-collapse: collapse; font-size: 13.5px;
+    border-radius: 8px; overflow: hidden;
+  }
+  .interact-table th {
+    background: var(--green-dark); color: white;
+    padding: 10px 14px; text-align: left; font-weight: 600;
+  }
+  .interact-table td {
+    padding: 9px 14px; border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  .interact-table tr:last-child td { border-bottom: none; }
+  .interact-table tr:nth-child(even) td { background: var(--bg); }
+  .plus  { color: #2e7d32; font-weight: 700; }
+  .minus { color: #c62828; font-weight: 700; }
+
+  /* ── Photo-flow (phytochrome) ── */
+  .photo-box {
+    background: #eef8f3; border: 1px solid var(--green-light);
+    border-radius: 8px; padding: 14px 18px; margin: 14px 0;
+    font-size: 13.5px; color: var(--text-soft);
+  }
+  .photo-flow {
+    display: flex; align-items: center;
+    gap: 10px; flex-wrap: wrap; margin: 8px 0;
+  }
+  .photo-state {
+    background: white; border: 1.5px solid var(--green-mid);
+    border-radius: 8px; padding: 6px 14px;
+    font-weight: 700; font-size: 13px; color: var(--green-dark);
+    text-align: center; line-height: 1.4;
+  }
+  .photo-state.active {
+    background: var(--green-dark); color: white;
+    border-color: var(--green-dark);
+  }
+  .arrow { color: var(--green-mid); font-size: 14px; font-weight: 700; }
+
+  /* ── Flower type cards ── */
+  .flower-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 12px; margin-bottom: 14px;
+  }
+  .flower-card {
+    border-radius: 10px; padding: 14px;
+    border: 1.5px solid; font-size: 13.5px;
+  }
+  .flower-card.short { border-color: #ef9a9a; background: #fff8f8; }
+  .flower-card.long  { border-color: #90caf9; background: #f8fbff; }
+  .flower-card.day   { border-color: #a5d6a7; background: #f8fff8; }
+  .flower-card h4 { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+  .flower-card.short h4 { color: #c62828; }
+  .flower-card.long  h4 { color: #1565c0; }
+  .flower-card.day   h4 { color: var(--green-dark); }
+  .flower-card p { font-size: 13px; color: #4a4a4a; }
+
+  /* ── Two-col grid ── */
+  .two-col {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 12px; margin-bottom: 14px;
+  }
+
+  /* ── Divider ── */
+  .divider {
+    border: none; border-top: 1px dashed var(--border);
+    margin: 22px 0;
+  }
+
+  /* ── Footer ── */
+  footer {
+    text-align: center; padding: 24px;
+    color: var(--text-soft); font-size: 12px;
+    border-top: 1px solid var(--border);
+  }
+
+  @media (max-width: 600px) {
+    .section-body { padding: 16px; }
+    .section-header { padding: 16px; }
+    .card-grid, .two-col, .flower-grid { grid-template-columns: 1fr; }
+    header { padding: 32px 20px 28px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div style="max-width:900px;margin:0 auto;position:relative;">
+    <div class="chapter-badge">選修生物 II ・ Chapter 5</div>
+    <h1>植物體的生長發育</h1>
+    <p>互動式教學講義重點整理 ｜ 5-1 植物激素 ・ 5-2 環境刺激的反應 ・ 探討活動 5-1</p>
+  </div>
+</header>
+
+<div class="toc">
+  <h2>目錄</h2>
+  <div class="toc-grid">
+    <a href="#s1">5-1 植物體的生長發育受激素調節</a>
+    <a href="#s1-overview">　├ 植物激素概述</a>
+    <a href="#s1-table">　├ 五大植物激素比較</a>
+    <a href="#s1-iaa">　├ 生長素（IAA）</a>
+    <a href="#s1-ga">　├ 吉貝素（GA）</a>
+    <a href="#s1-ck">　├ 細胞分裂素（CK）</a>
+    <a href="#s1-aba">　├ 離層酸（ABA）</a>
+    <a href="#s1-eth">　├ 乙烯</a>
+    <a href="#s1-interact">　└ 激素交互作用</a>
+    <a href="#s2">5-2 植物體對環境刺激的反應</a>
+    <a href="#s2-tropism">　├ 向性</a>
+    <a href="#s2-nastic">　├ 傾性</a>
+    <a href="#s2-photo">　├ 光週期性</a>
+    <a href="#s2-germ">　├ 種子萌發</a>
+    <a href="#s2-stress">　└ 逆境反應</a>
+    <a href="#s3">探討活動 5-1 ── 發現植物的生長素</a>
+  </div>
+</div>
+
+<main>
+
+<!-- ═══════════════ 5-1 植物激素 ═══════════════ -->
+<div class="section s1" id="s1">
+  <div class="section-header">
+    <div class="section-num">5-1</div>
+    <h2>植物體的生長發育受激素調節</h2>
+    <span class="tag">五大激素・頂芽優勢・交互作用</span>
+  </div>
+  <div class="section-body">
+
+    <!-- 激素概述 -->
+    <div class="subsection" id="s1-overview">
+      <div class="subsection-title">植物激素概述</div>
+      <div class="card">
+        <div class="info-row"><span class="label">定義</span><span>微量有機物，調節植物的生長發育</span></div>
+        <div class="info-row"><span class="label">產生部位</span><span>個體中所有活細胞皆能產生，各激素產生部位可能不同</span></div>
+        <div class="info-row"><span class="label">運送方式</span><span>藉由擴散或維管束組織運送</span></div>
+        <div class="info-row"><span class="label">作用特性</span><span>微量即可作用；需與目標細胞受體結合；同種激素在不同細胞可能功能不同；不同種激素彼此間可能有交互作用（協同或拮抗）</span></div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- 五大激素總表 -->
+    <div class="subsection" id="s1-table">
+      <div class="subsection-title">五大植物激素比較</div>
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>激素</th>
+            <th>縮寫</th>
+            <th>產生部位</th>
+            <th>主要功能</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="label">生長素</td>
+            <td><span class="hormone-badge badge-green">IAA</span></td>
+            <td>根尖與莖頂分生組織、嫩芽、幼葉及發育中種子</td>
+            <td>促進細胞延伸與組織分化；與向性有關；頂芽優勢；農業（扦插、嫁接、除草劑 2,4-D）</td>
+          </tr>
+          <tr>
+            <td class="label">吉貝素</td>
+            <td><span class="hormone-badge badge-blue">GA</span></td>
+            <td>根尖與莖頂分生組織、嫩芽、幼葉及種子內的胚</td>
+            <td>促進節間延長；促進穀類種子萌發；打破休眠；促進長日照植物開花（取代春化作用）</td>
+          </tr>
+          <tr>
+            <td class="label">細胞分裂素</td>
+            <td><span class="hormone-badge badge-orange">CK</span></td>
+            <td>根部合成後運至地上部；覆盆子等果實合成</td>
+            <td>促進細胞分裂；延遲葉片老化；促進腋芽生長；抑制頂芽優勢（與 IAA 拮抗）</td>
+          </tr>
+          <tr>
+            <td class="label">離層酸</td>
+            <td><span class="hormone-badge badge-red">ABA</span></td>
+            <td>植物體大部分細胞、未成熟或逆境中的成熟種子</td>
+            <td>促進芽與種子休眠；促進氣孔關閉（抗旱）；促進葉片老化（逆境激素）</td>
+          </tr>
+          <tr>
+            <td class="label">乙烯</td>
+            <td><span class="hormone-badge badge-purple">C₂H₄</span></td>
+            <td>植物大部分細胞（氣態，易擴散）</td>
+            <td>促進果實成熟；抑制細胞延長；促進葉老化與離層形成；促進淹水時根部細胞計畫性死亡（形成氣室）</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <hr class="divider">
+
+    <!-- 生長素詳細 -->
+    <div class="subsection" id="s1-iaa">
+      <div class="subsection-title">生長素（IAA）詳解</div>
+      <div class="card">
+        <div class="card-title"><span class="dot"></span>生長素（IAA）<span class="hormone-badge badge-green">IAA</span></div>
+        <div class="info-row"><span class="label">發現者</span><span>達爾文（Darwin）父子 ── 芽鞘向光性研究</span></div>
+        <div class="info-row"><span class="label">天然種類</span><span>吲哚乙酸（IAA）；人工合成：萘乙酸（NAA）、二氯苯氧乙酸（2,4-D）</span></div>
+
+        <div class="func-label">功能 1：向性（生長反應）</div>
+        <ul class="points">
+          <li><strong>向光性</strong>：側光照射 → IAA 由向光側移向背光側 → 背光側 IAA 多 → 背光側細胞伸長快 → 莖向光彎曲</li>
+          <li><strong>背地性（向性）</strong>：IAA 在向地側含量多 → 向地側細胞伸長多 → 莖背地生長</li>
+          <li><strong>不同器官對 IAA 的感受性不同</strong>：莖 > 芽 > 根；同濃度對根可能抑制，對莖卻促進</li>
+        </ul>
+
+        <div class="func-label">功能 2：頂芽優勢</div>
+        <ul class="points">
+          <li>莖頂 IAA 濃度高 → 促進頂芽生長，抑制鄰近側芽（保持休眠）</li>
+          <li>去除頂芽 → 側芽生長明顯；以 NAA 塗於切口處 → 側芽僅微生長</li>
+        </ul>
+
+        <div class="func-label">農業應用</div>
+        <ul class="points">
+          <li>刺激形成層細胞分裂 → 提高嫁接成功率</li>
+          <li>促進不定根形成 → 提高扦插繁殖成功率</li>
+          <li>促進果實肥大（如草莓種子產生 IAA，促進花托生長）</li>
+          <li>抑制離層產生 → 維持果柄生長，延遲落果</li>
+          <li>2,4-D 為除草劑：去除雙子葉雜草，保全單子葉農作物</li>
+          <li>誘導單性結果（雌蕊不授粉，直接發育出果實）</li>
+        </ul>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- 吉貝素 -->
+    <div class="subsection" id="s1-ga">
+      <div class="subsection-title">吉貝素（GA）詳解</div>
+      <div class="card">
+        <div class="card-title"><span class="dot"></span>吉貝素（GA）<span class="hormone-badge badge-blue">GA</span></div>
+        <div class="info-row"><span class="label">發現來源</span><span>感染水稻的 Gibberella fujikuroi（惡苗病菌）</span></div>
+        <div class="func-label">主要功能</div>
+        <ul class="points">
+          <li>促進節間延長：刺激細胞分裂與延長（矮莖植物施 GA 可恢復正常高度，如捲心甘藍）</li>
+          <li>促進種子萌發：種子吸水 → 胚產生 GA → GA 進入胚乳 → 促進糊粉層分泌水解酶 → 分解澱粉等大分子 → 小分子養分供幼苗生長</li>
+          <li>促進長日照植物開花（取代春化作用，如彩葉甘藍）</li>
+          <li>促進雄花分化（部分植物）</li>
+        </ul>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- 細胞分裂素 -->
+    <div class="subsection" id="s1-ck">
+      <div class="subsection-title">細胞分裂素（CK）詳解</div>
+      <div class="card">
+        <div class="card-title"><span class="dot"></span>細胞分裂素（CK）<span class="hormone-badge badge-orange">CK</span></div>
+        <div class="info-row"><span class="label">發現者</span><span>史庫格（Skoog）── 由酵母菌發現</span></div>
+        <ul class="points">
+          <li>促進細胞分裂；延遲組織老化（延緩葉片黃化）</li>
+          <li>促進腋芽生長（側芽生長）</li>
+          <li>抑制根部氣孔關閉（對 ABA 的拮抗）</li>
+          <li>促進花芽分化（洋桔梗、蘋果、荔枝等）</li>
+        </ul>
+        <div class="highlight-box">
+          <strong>生長素與細胞分裂素的組織培養應用：</strong><br>
+          IAA/CK 比值高 → 促進根分化；<br>
+          IAA/CK 比值低（接近）→ 促進莖葉分化；<br>
+          IAA/CK 比值居中 → 形成癒傷組織
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- 離層酸 -->
+    <div class="subsection" id="s1-aba">
+      <div class="subsection-title">離層酸（ABA）詳解</div>
+      <div class="card">
+        <div class="card-title"><span class="dot"></span>離層酸（ABA）<span class="hormone-badge badge-red">ABA</span></div>
+        <div class="info-row"><span class="label">別稱</span><span>休眠素；逆境激素</span></div>
+        <div class="info-row"><span class="label">形成離層</span><span>造成葉、花、果的自然脫落（後來研究發現造成離層的主因是乙烯，非 ABA）</span></div>
+        <ul class="points">
+          <li>促進芽與種子休眠：未成熟種子中高濃度 ABA 抑制萌發；成熟種子中可使種子休眠</li>
+          <li>促進氣孔關閉：植物嚴重缺水時，根部產生 ABA 運至葉片 → 氣孔關閉 → 減少水分蒸散</li>
+          <li>與 GA 拮抗：種子打破休眠後，ABA 濃度下降，GA 濃度升高，促進萌發</li>
+          <li>ABA 也能抑制莖伸長（與 IAA 有拮抗作用）</li>
+        </ul>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- 乙烯 -->
+    <div class="subsection" id="s1-eth">
+      <div class="subsection-title">乙烯（Ethylene）詳解</div>
+      <div class="card">
+        <div class="card-title"><span class="dot"></span>乙烯（Ethylene）<span class="hormone-badge badge-purple">C₂H₄</span></div>
+        <div class="info-row"><span class="label">特性</span><span>氣態植物激素，易擴散到植物各部位</span></div>
+        <ul class="points">
+          <li>促進果實成熟：使未成熟的奇異果、木瓜的顏色和氣味發生變化（更甜、更軟）</li>
+          <li>抑制細胞延長：抑制幼苗胚軸伸長速率，使胚軸粗短，助於茁壯</li>
+          <li>細胞計畫性死亡：長期淹水缺氧 → 乙烯誘導部分根的細胞計畫性死亡 → 增加空隙 → 利於氣體交換</li>
+          <li>促進葉老化與離層形成（實為離層形成的主因）</li>
+        </ul>
+        <div class="highlight-box">
+          <strong>乙烯與 IAA 的交互作用（葉脫落過程）：</strong><br>
+          幼葉期：IAA 含量高 → 降低葉柄對乙烯的敏感度 → 避免離層形成<br>
+          老葉期：葉不再生成 IAA → 乙烯增加 → 加速老化 → 誘導葉柄基部形成離層 → 老葉脫落
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- 激素交互作用 -->
+    <div class="subsection" id="s1-interact">
+      <div class="subsection-title">激素交互作用總整理</div>
+      <table class="interact-table">
+        <thead>
+          <tr><th>效應</th><th>協同（+）激素</th><th>拮抗（−）激素</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>細胞分裂</td><td><span class="plus">+ IAA、CK</span></td><td></td></tr>
+          <tr><td>莖的伸長</td><td><span class="plus">+ IAA、GA</span></td><td><span class="minus">− ABA</span></td></tr>
+          <tr><td>種子休眠</td><td><span class="plus">+ ABA</span></td><td><span class="minus">− GA</span></td></tr>
+          <tr><td>氣孔關閉</td><td><span class="plus">+ ABA</span></td><td><span class="minus">− IAA（根）、CK</span></td></tr>
+          <tr><td>葉片老化</td><td><span class="plus">+ 乙烯</span></td><td><span class="minus">− CK</span></td></tr>
+          <tr><td>腋芽生長</td><td><span class="plus">+ CK</span></td><td><span class="minus">− IAA（頂芽優勢）</span></td></tr>
+          <tr><td>組織老化延遲</td><td><span class="plus">+ CK</span></td><td><span class="minus">− 乙烯</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════ 5-2 環境刺激的反應 ═══════════════ -->
+<div class="section s2" id="s2">
+  <div class="section-header">
+    <div class="section-num">5-2</div>
+    <h2>植物體對環境刺激的反應</h2>
+    <span class="tag">向性・傾性・光週期・逆境</span>
+  </div>
+  <div class="section-body">
+
+    <!-- 向性 -->
+    <div class="subsection" id="s2-tropism">
+      <div class="subsection-title">向性（Tropism）</div>
+      <table class="compare-table">
+        <thead>
+          <tr><th>向性</th><th>影響因子</th><th>機制簡介</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="label">向光性</td>
+            <td>側光</td>
+            <td>頂芽產生的 IAA 向下運送時，側光造成 IAA 不均勻分布，背光側 IAA 多 → 莖向光彎曲</td>
+          </tr>
+          <tr>
+            <td class="label">向地性</td>
+            <td>重力</td>
+            <td>根冠內平衡細胞含澱粉粒，可感知重力 → 影響 IAA 分布 → 造成根的向地性</td>
+          </tr>
+          <tr>
+            <td class="label">向觸性</td>
+            <td>接觸物體或枝條</td>
+            <td>植物對機械性刺激，產生細胞伸長不對稱 → 造成向觸性（如藤蔓纏繞）</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <hr class="divider">
+
+    <!-- 傾性 -->
+    <div class="subsection" id="s2-nastic">
+      <div class="subsection-title">傾性（Nastic Movement）── 非向性</div>
+      <ul class="content-list">
+        <li>植物因膨壓變化而發生的可逆性運動，<strong>不受刺激方向影響</strong></li>
+        <li>含羞草的觸發運動（葉枕膨壓變化 → 小葉向上閉合）</li>
+        <li>捕蠅草的捕蟲運動</li>
+        <li>酢漿草在太陽下山後葉片下垂</li>
+        <li>特性：<strong>具可逆性</strong>（可恢復原狀）</li>
+      </ul>
+    </div>
+
+    <hr class="divider">
+
+    <!-- 光週期 -->
+    <div class="subsection" id="s2-photo">
+      <div class="subsection-title">光週期性（Photoperiodism）── 光對開花的影響</div>
+
+      <div class="flower-grid">
+        <div class="flower-card short">
+          <h4>短日照植物</h4>
+          <p>需連續<strong>黑暗期夠長</strong>（大於臨界夜長）才能開花<br>例：菊花、水稻<br>臨界夜長約 9 小時以上</p>
+        </div>
+        <div class="flower-card long">
+          <h4>長日照植物</h4>
+          <p>需連續<strong>黑暗期夠短</strong>（小於臨界夜長）才能開花<br>例：鳶尾、菠菜<br>臨界夜長約 14 小時以下</p>
+        </div>
+        <div class="flower-card day">
+          <h4>中性植物</h4>
+          <p>開花不受光週期影響<br>例：番茄、向日葵<br>在任何光週期下均可開花</p>
+        </div>
+      </div>
+
+      <div class="highlight-box">
+        <strong>關鍵：決定開花的是「連續黑暗期的長短」而非日照長短！</strong><br>
+        在黑暗期中斷（以紅光照射）→ 短日照植物不開花，長日照植物開花。
+      </div>
+
+      <div class="subsection-title" style="margin-top:20px;">光敏素（Phytochrome）機制</div>
+      <div class="photo-box">
+        <div class="photo-flow">
+          <div class="photo-state">Pr（紅光型）</div>
+          <div class="arrow">── 紅光（660 nm）→</div>
+          <div class="photo-state active">Pfr（遠紅光型）<br><small>活性態</small></div>
+        </div>
+        <div class="photo-flow">
+          <div class="photo-state active">Pfr</div>
+          <div class="arrow">── 遠紅光（730 nm）或黑暗→</div>
+          <div class="photo-state">Pr</div>
+        </div>
+        <ul class="points" style="margin-top:10px;">
+          <li>光敏素存在於袋狀體（覆膜小泡）與葉綠體中</li>
+          <li>Pfr/Ptotal 比例高 → 促進長日照植物開花；抑制短日照植物開花</li>
+          <li>Pfr 促進種子萌發、莖葉伸長、光合作用色素合成</li>
+        </ul>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- 種子萌發 -->
+    <div class="subsection" id="s2-germ">
+      <div class="subsection-title">環境對種子萌發的影響</div>
+      <table class="compare-table">
+        <thead>
+          <tr><th>環境因子</th><th>影響說明</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="label">水分</td>
+            <td>種子吸水後，激活種子內酵素，代謝加速，促進萌發</td>
+          </tr>
+          <tr>
+            <td class="label">溫度</td>
+            <td>適溫加速酵素反應；春化作用（需一段低溫期才能萌發，如冬小麥）</td>
+          </tr>
+          <tr>
+            <td class="label">光照</td>
+            <td>需光種子：Pfr 比例高→促進萌發（如萵苣）；嫌光種子：Pr 比例高 → 促進萌發</td>
+          </tr>
+          <tr>
+            <td class="label">氧氣</td>
+            <td>種子行有氧呼吸以供應萌發所需能量，缺氧則抑制萌發</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="highlight-box">
+        <strong>春化作用（Vernalization）：</strong>需要一段低溫（0～10°C）才能開花結實的現象。<br>
+        例：冬小麥需在冬季低溫中生長，隔年春天才能抽穗開花。<br>
+        感受低溫的部位：莖頂與胚（分生組織）
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- 逆境 -->
+    <div class="subsection" id="s2-stress">
+      <div class="subsection-title">逆境對植物生長發育的影響</div>
+      <table class="compare-table">
+        <thead>
+          <tr><th>逆境類型</th><th>植物的應對機制</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="label">缺水逆境</td>
+            <td>ABA 增加 → 氣孔關閉（減少水分蒸散）；ABA 抑制細胞生長；乙烯增加（促進落葉）</td>
+          </tr>
+          <tr>
+            <td class="label">高鹽逆境</td>
+            <td>乙烯增加 → 促進氣孔關閉；調節細胞滲透壓（積累相容性溶質）；部分植物以囊泡分泌鹽分</td>
+          </tr>
+          <tr>
+            <td class="label">淹水逆境</td>
+            <td>乙烯大量合成 → 誘導部分根的細胞計畫性死亡 → 形成氣室（空隙）→ 利於氣體交換（如玉米）</td>
+          </tr>
+          <tr>
+            <td class="label">蟲害逆境</td>
+            <td>立即性防禦：觸發過敏反應，生成抵抗入侵化學物質<br>局部性防禦：細胞壁木質化、細胞計畫性死亡、茉莉酸誘導防禦蛋白<br>系統性防禦：茉莉酸及衍生揮發物（水楊酸、水楊酸甲酯）經篩管或空氣傳遞至未受害部位</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════ 探討活動 5-1 ═══════════════ -->
+<div class="section s3" id="s3">
+  <div class="section-header">
+    <div class="section-num" style="font-size:13px;">活動</div>
+    <h2>探討活動 5-1 ── 發現植物的生長素</h2>
+    <span class="tag">實驗設計・結果解讀</span>
+  </div>
+  <div class="section-body">
+
+    <div class="info-box">
+      透過一系列經典實驗，科學家逐步確認植物頂端存在化學性生長訊號（生長素），並量化其濃度與生長反應的關係。
+    </div>
+
+    <div class="two-col">
+      <div class="card">
+        <div class="card-title"><span class="dot"></span>達爾文父子（1880）</div>
+        <div class="info-row"><span class="label">問題</span><span>芽鞘為何會向光生長？</span></div>
+        <div class="info-row"><span class="label">假說</span><span>芽鞘頂端會感應側光而向光生長</span></div>
+        <div class="info-row"><span class="label">結論</span><span>芽鞘頂端感應光，並傳遞訊號給下方使不均勻生長</span></div>
+      </div>
+      <div class="card">
+        <div class="card-title"><span class="dot"></span>柏伊森-詹生（1913）</div>
+        <div class="info-row"><span class="label">材料</span><span>雲母片（不透水）、洋菜膠（可透水）</span></div>
+        <div class="info-row"><span class="label">結論</span><span>芽鞘頂端感應光的物質可經洋菜膠傳遞（化學性訊號），無法穿過雲母片</span></div>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div class="card">
+        <div class="card-title"><span class="dot"></span>鮑爾（1918）</div>
+        <div class="info-row"><span class="label">操作</span><span>將切除的芽鞘頂端置於芽鞘一側，置於黑暗中</span></div>
+        <div class="info-row"><span class="label">結論</span><span>芽鞘頂端可產生促進生長的化學物質（不需光照，只要不均勻分布即可彎曲）</span></div>
+      </div>
+      <div class="card">
+        <div class="card-title"><span class="dot"></span>文特（1926）</div>
+        <div class="info-row"><span class="label">操作</span><span>用洋菜膠吸收頂端物質後，置於去頂芽鞘一側，黑暗中觀察彎曲角度</span></div>
+        <div class="info-row"><span class="label">結論</span><span>物質濃度越多，彎曲角度越大；命名此物質為「生長素」</span></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</main>
+
+<footer>
+  選修生物 II ・ 第 5 章 植物體的生長發育 ・ 重點整理 ｜ 互動式教學講義
+</footer>
+
+</body>
+</html>

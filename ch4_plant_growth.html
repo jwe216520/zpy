@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第 4 章｜植物的生殖 — 重點整理</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@400;700&display=swap');
+
+  :root {
+    --green-dark: #2d6a4f;
+    --green-mid: #52b788;
+    --green-light: #b7e4c7;
+    --green-pale: #d8f3dc;
+    --accent-gold: #e9c46a;
+    --accent-coral: #e76f51;
+    --accent-teal: #4cc9a0;
+    --bg: #f7faf8;
+    --surface: #ffffff;
+    --text: #1a2e22;
+    --text-soft: #4a6558;
+    --border: #c8e6d0;
+    --shadow: rgba(45, 106, 79, 0.08);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Noto Sans TC', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.8;
+    font-size: 15px;
+  }
+
+  /* ── Header ── */
+  header {
+    background: linear-gradient(135deg, var(--green-dark) 0%, #1b4332 100%);
+    color: white;
+    padding: 48px 32px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute; top: -60px; right: -60px;
+    width: 240px; height: 240px;
+    background: rgba(82,183,136,0.18);
+    border-radius: 50%;
+  }
+  header::after {
+    content: '';
+    position: absolute; bottom: -40px; left: 30%;
+    width: 160px; height: 160px;
+    background: rgba(82,183,136,0.1);
+    border-radius: 50%;
+  }
+  .chapter-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--green-mid);
+    color: white; font-weight: 700; font-size: 13px;
+    padding: 4px 14px; border-radius: 20px;
+    margin-bottom: 16px; letter-spacing: 1px;
+  }
+  header h1 {
+    font-family: 'Noto Serif TC', serif;
+    font-size: clamp(28px, 5vw, 48px);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 12px;
+    position: relative;
+  }
+  header p {
+    color: var(--green-light);
+    font-size: 14px;
+    position: relative;
+  }
+
+  /* ── TOC ── */
+  .toc {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin: 32px auto;
+    max-width: 900px;
+  }
+  .toc h2 {
+    font-size: 13px; font-weight: 700; letter-spacing: 2px;
+    color: var(--green-dark); text-transform: uppercase;
+    margin-bottom: 14px; display: flex; align-items: center; gap: 8px;
+  }
+  .toc h2::before { content: '▶'; font-size: 10px; }
+  .toc-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 8px;
+  }
+  .toc a {
+    color: var(--text-soft); text-decoration: none; font-size: 14px;
+    padding: 6px 10px; border-radius: 6px;
+    transition: background 0.15s, color 0.15s;
+    display: block;
+  }
+  .toc a:hover { background: var(--green-pale); color: var(--green-dark); }
+
+  /* ── Main layout ── */
+  main { max-width: 900px; margin: 0 auto; padding: 0 20px 60px; }
+
+  /* ── Sections ── */
+  .section {
+    background: var(--surface);
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    margin-bottom: 28px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px var(--shadow);
+  }
+
+  .section-header {
+    padding: 20px 28px;
+    display: flex; align-items: center; gap: 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  .section-num {
+    width: 44px; height: 44px; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Noto Serif TC', serif;
+    font-size: 18px; font-weight: 700; flex-shrink: 0;
+  }
+  .s1 .section-num { background: #d8f3dc; color: #1b4332; }
+  .s2 .section-num { background: #fff3cd; color: #7c5200; }
+  .s3 .section-num { background: #d0e8ff; color: #1a3d6b; }
+
+  .section-header h2 {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 19px; font-weight: 700; color: var(--text);
+  }
+  .section-header .tag {
+    margin-left: auto; font-size: 11px; font-weight: 500;
+    padding: 3px 10px; border-radius: 20px;
+    background: var(--green-pale); color: var(--green-dark); white-space: nowrap;
+  }
+
+  .section-body { padding: 24px 28px; }
+
+  /* ── Subsections ── */
+  .subsection { margin-bottom: 28px; }
+  .subsection:last-child { margin-bottom: 0; }
+  .subsection-title {
+    font-size: 14px; font-weight: 700; letter-spacing: 1px;
+    color: var(--green-dark);
+    border-left: 3px solid var(--green-mid);
+    padding-left: 10px; margin-bottom: 14px;
+  }
+
+  /* ── Cards ── */
+  .card-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px; margin-bottom: 16px;
+  }
+  .card {
+    border: 1px solid var(--border); border-radius: 10px;
+    padding: 16px; background: var(--bg);
+  }
+  .card-title {
+    font-size: 13px; font-weight: 700; color: var(--green-dark);
+    margin-bottom: 6px; display: flex; align-items: center; gap: 6px;
+  }
+  .card-title .dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--green-mid); flex-shrink: 0;
+  }
+  .card p, .card li { font-size: 13.5px; color: var(--text-soft); }
+  .card ul { padding-left: 16px; }
+  .card li { margin-bottom: 3px; }
+
+  /* ── Compare table ── */
+  .compare-table {
+    width: 100%; border-collapse: collapse; font-size: 13.5px;
+    margin-bottom: 16px; border-radius: 8px; overflow: hidden;
+  }
+  .compare-table th {
+    background: var(--green-dark); color: white;
+    padding: 10px 14px; text-align: left; font-weight: 600;
+  }
+  .compare-table td {
+    padding: 9px 14px; border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  .compare-table tr:last-child td { border-bottom: none; }
+  .compare-table tr:nth-child(even) td { background: var(--bg); }
+  .compare-table .label { font-weight: 600; color: var(--green-dark); }
+
+  /* ── Process flow ── */
+  .flow {
+    display: flex; flex-wrap: wrap; align-items: center;
+    gap: 8px; margin: 14px 0;
+  }
+  .flow-step {
+    background: var(--green-pale); border: 1px solid var(--green-light);
+    border-radius: 8px; padding: 8px 14px;
+    font-size: 13px; color: var(--green-dark); font-weight: 500;
+  }
+  .flow-arrow { color: var(--green-mid); font-size: 18px; font-weight: 700; }
+
+  /* ── Key terms ── */
+  .term-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 10px; margin-bottom: 16px;
+  }
+  .term {
+    display: flex; align-items: flex-start; gap: 10px;
+    padding: 12px; border-radius: 8px; background: var(--bg);
+    border: 1px solid var(--border);
+  }
+  .term-label {
+    background: var(--green-mid); color: white;
+    border-radius: 6px; padding: 3px 8px;
+    font-size: 12px; font-weight: 700; flex-shrink: 0; margin-top: 2px;
+  }
+  .term-desc { font-size: 13.5px; color: var(--text-soft); }
+
+  /* ── Highlight box ── */
+  .highlight-box {
+    background: linear-gradient(135deg, #fff9e6, #fffbe8);
+    border-left: 4px solid var(--accent-gold);
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px; margin: 14px 0;
+    font-size: 13.5px; color: #5c4200;
+  }
+  .highlight-box strong { color: #7c5200; }
+
+  .info-box {
+    background: #eef8f3; border: 1px solid var(--green-light);
+    border-radius: 8px; padding: 14px 18px; margin: 14px 0;
+    font-size: 13.5px; color: var(--text-soft);
+  }
+  .info-box strong { color: var(--green-dark); }
+
+  /* ── List ── */
+  .content-list { list-style: none; padding: 0; }
+  .content-list li {
+    padding: 7px 0 7px 20px; position: relative;
+    font-size: 14px; border-bottom: 1px dashed var(--border);
+    color: var(--text-soft);
+  }
+  .content-list li:last-child { border-bottom: none; }
+  .content-list li::before {
+    content: ''; position: absolute; left: 0; top: 17px;
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--green-mid);
+  }
+  .content-list li strong { color: var(--text); font-weight: 600; }
+
+  /* ── Double fertilisation diagram ── */
+  .double-fert {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 12px; margin: 14px 0;
+  }
+  .fert-card {
+    border-radius: 10px; padding: 16px;
+    font-size: 13.5px;
+  }
+  .fert-card.first { background: #e8f5e9; border: 1px solid #a5d6a7; }
+  .fert-card.second { background: #e3f2fd; border: 1px solid #90caf9; }
+  .fert-card h4 { font-weight: 700; margin-bottom: 8px; font-size: 14px; }
+  .fert-card.first h4 { color: #1b5e20; }
+  .fert-card.second h4 { color: #0d47a1; }
+  .equation {
+    background: white; border-radius: 6px; padding: 8px 12px;
+    font-size: 13px; margin-top: 8px; color: var(--text);
+    font-family: monospace;
+  }
+
+  /* ── Seed types ── */
+  .seed-compare {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 14px; margin: 14px 0;
+  }
+  .seed-card {
+    border-radius: 10px; padding: 18px;
+    font-size: 13.5px;
+  }
+  .seed-card.mono { background: #fce4ec; border: 1px solid #f48fb1; }
+  .seed-card.di { background: #e8eaf6; border: 1px solid #9fa8da; }
+  .seed-card h4 { font-weight: 700; margin-bottom: 10px; font-size: 15px; }
+  .seed-card.mono h4 { color: #880e4f; }
+  .seed-card.di h4 { color: #283593; }
+
+  /* ── Tags ── */
+  .pill {
+    display: inline-block; padding: 2px 9px; border-radius: 12px;
+    font-size: 12px; font-weight: 600; margin: 2px;
+  }
+  .pill-green { background: var(--green-pale); color: var(--green-dark); }
+  .pill-gold { background: #fff3cd; color: #7c5200; }
+  .pill-blue { background: #e3f2fd; color: #1a3d6b; }
+  .pill-coral { background: #fce8e6; color: #b71c1c; }
+
+  /* ── Divider ── */
+  .divider {
+    border: none; border-top: 1px dashed var(--border);
+    margin: 22px 0;
+  }
+
+  /* ── Footer ── */
+  footer {
+    text-align: center; padding: 24px;
+    color: var(--text-soft); font-size: 12px;
+    border-top: 1px solid var(--border);
+  }
+
+  @media (max-width: 600px) {
+    .section-body { padding: 16px; }
+    .section-header { padding: 16px; }
+    .double-fert, .seed-compare, .card-grid, .term-grid { grid-template-columns: 1fr; }
+    header { padding: 32px 20px 28px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div style="max-width:900px;margin:0 auto;position:relative;">
+    <div class="chapter-badge">選修生物 II ・ Chapter 4</div>
+    <h1>植物的生殖</h1>
+    <p>互動式教學講義重點整理 ｜ 4-1 無性生殖 ・ 4-2 有性生殖 ・ 4-3 種子構造與萌發</p>
+  </div>
+</header>
+
+<div class="toc">
+  <h2>目錄</h2>
+  <div class="toc-grid">
+    <a href="#s1">4-1 被子植物的無性生殖</a>
+    <a href="#s1-1">　├ 植物細胞的全潛能性</a>
+    <a href="#s2">4-2 被子植物的有性生殖</a>
+    <a href="#s2-1">　├ 花的構造</a>
+    <a href="#s2-2">　├ 果實的構造</a>
+    <a href="#s2-3">　└ 有性生殖的階段</a>
+    <a href="#s3">4-3 種子的構造與萌發</a>
+    <a href="#s3-1">　├ 種子的構造</a>
+    <a href="#s3-2">　└ 萌發成幼苗的過程</a>
+    <a href="#compare">無性 vs 有性生殖比較</a>
+  </div>
+</div>
+
+<main>
+
+<!-- ═══════════════ 4-1 無性生殖 ═══════════════ -->
+<div class="section s1" id="s1">
+  <div class="section-header">
+    <div class="section-num">4-1</div>
+    <h2>被子植物的無性生殖</h2>
+    <span class="tag">全潛能性・組織培養</span>
+  </div>
+  <div class="section-body">
+
+    <div class="subsection" id="s1-1">
+      <div class="subsection-title">植物細胞的全潛能性（Totipotentiality）</div>
+      <ul class="content-list">
+        <li><strong>定義：</strong>每個植物細胞都含有個體發育所需的全套遺傳因子，在適當條件下可發育成完整植株。</li>
+        <li><strong>植物生長機制：</strong>莖頂與根尖的<strong>生長點</strong>（分裂區）持續分裂細胞，使植物增高增粗。</li>
+        <li><strong>損傷修復：</strong>受傷時，植物體內活細胞表現全潛能性，進行細胞分裂與特化，長出新組織（如樹皮受損後新分枝）。</li>
+      </ul>
+
+      <div class="highlight-box" style="margin-top:16px;">
+        <strong>全潛能性的提出者：</strong>奧地利植物學家<strong>哈伯蘭德（Gottlieb Haberlandt）</strong>，1902 年提出理論。
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <div class="subsection">
+      <div class="subsection-title">全潛能性的應用：組織培養</div>
+      <div class="card-grid">
+        <div class="card">
+          <div class="card-title"><span class="dot"></span>目的</div>
+          <ul><li>大量複製特定品種個體</li><li>應用於雜交、基因改造</li><li>永續保存優良品種</li></ul>
+        </div>
+        <div class="card">
+          <div class="card-title"><span class="dot"></span>特點</div>
+          <ul><li>需無菌環境操作</li><li>培養基含植物激素（生長素、細胞分裂素）、維生素、礦物質</li><li>使用洋菜或卡拉膠固定培養基</li></ul>
+        </div>
+      </div>
+
+      <div class="subsection-title" style="margin-top:18px;">組織培養 6 大步驟</div>
+      <div class="flow">
+        <div class="flow-step">① 取活組織<br><span style="font-size:11px;opacity:0.7">從母株取材，表面消毒</span></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">② 初次栽培<br><span style="font-size:11px;opacity:0.7">植入培養瓶，封瓶防菌</span></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">③ 增生栽培<br><span style="font-size:11px;opacity:0.7">大量繁殖→癒傷組織</span></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">④ 培養分化<br><span style="font-size:11px;opacity:0.7">誘導分化成莖葉構造</span></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">⑤ 生根栽培<br><span style="font-size:11px;opacity:0.7">使植體長根</span></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">⑥ 馴化栽培<br><span style="font-size:11px;opacity:0.7">移植盆中，適應大氣</span></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════ 4-2 有性生殖 ═══════════════ -->
+<div class="section s2" id="s2">
+  <div class="section-header">
+    <div class="section-num">4-2</div>
+    <h2>被子植物的有性生殖</h2>
+    <span class="tag">世代交替・雙重受精</span>
+  </div>
+  <div class="section-body">
+
+    <!-- 花的構造 -->
+    <div class="subsection" id="s2-1">
+      <div class="subsection-title">花的構造</div>
+      <div class="card-grid" style="grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));">
+        <div class="card">
+          <div class="card-title"><span class="dot"></span>花萼</div>
+          <p>萼片組成；位於花瓣外側，具<strong>保護</strong>或吸引傳粉媒介的功能。</p>
+        </div>
+        <div class="card">
+          <div class="card-title"><span class="dot"></span>花冠</div>
+          <p>花瓣組成；色彩鮮豔可<strong>吸引傳粉媒介</strong>、協助傳粉。</p>
+        </div>
+        <div class="card">
+          <div class="card-title"><span class="dot"></span>雄蕊</div>
+          <p>花絲 + 花藥；花藥上有<strong>花粉囊</strong>，可產生花粉粒。</p>
+        </div>
+        <div class="card">
+          <div class="card-title"><span class="dot"></span>雌蕊</div>
+          <p>子房 + 花柱；頂端為<strong>柱頭</strong>（花粉黏附處），子房基部膨大含<strong>胚珠</strong>（卵細胞發育場所）。</p>
+        </div>
+      </div>
+
+      <div class="subsection-title" style="margin-top:18px;">花的類型</div>
+      <table class="compare-table">
+        <thead><tr><th>類型</th><th>定義</th><th>舉例</th></tr></thead>
+        <tbody>
+          <tr><td class="label">完全花</td><td>包含花萼、花冠、雄蕊、雌蕊</td><td>玫瑰花</td></tr>
+          <tr><td class="label">不完全花</td><td>缺少花萼、花冠、雄蕊或雌蕊之任一</td><td>絲瓜花</td></tr>
+          <tr><td class="label">兩性花</td><td>同時具有雄蕊與雌蕊</td><td>碗豆花、百合花</td></tr>
+          <tr><td class="label">單性花</td><td>僅具雄蕊或雌蕊（屬不完全花）</td><td>絲瓜花、向日葵</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <hr class="divider">
+
+    <!-- 果實構造 -->
+    <div class="subsection" id="s2-2">
+      <div class="subsection-title">果實的構造</div>
+      <div class="info-box">
+        花完成授粉與受精後凋謝，<strong>子房壁</strong>發育為<strong>果皮（含果肉）</strong>，<strong>胚珠</strong>發育為<strong>種子</strong>。果實由果皮與種子組成，俗稱的「果皮與果肉」統稱果皮。
+      </div>
+
+      <div class="card-grid">
+        <div class="card">
+          <div class="card-title"><span class="dot"></span>乾果</div>
+          <ul>
+            <li><strong>裂果：</strong>自行裂開釋出種子，如豌豆（豆莢）</li>
+            <li><strong>閉果：</strong>藉外力裂開，如向日葵果實（葵瓜子）、板栗</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-title"><span class="dot"></span>肉果</div>
+          <ul>
+            <li>成熟時果皮為多汁肉質，大多藉動物媒介散播種子</li>
+            <li>如桃、李、檸檬、草莓、蘋果、鳳梨等</li>
+            <li>有些肉果（如草莓）果皮來自花托而非子房</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- 有性生殖的階段 -->
+    <div class="subsection" id="s2-3">
+      <div class="subsection-title">世代交替（有性生殖生活史）</div>
+      <div class="card-grid">
+        <div class="card">
+          <div class="card-title"><span class="dot"></span>二倍體世代（2n）— 孢子體世代</div>
+          <ul>
+            <li>由受精卵（合子）有絲分裂發育而成多細胞植株</li>
+            <li>雌蕊胚珠中：大孢子母細胞（2n）→ 減數分裂 → 大孢子（1n）</li>
+            <li>雄蕊花藥中：小孢子母細胞（2n）→ 減數分裂 → 小孢子（1n）</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-title"><span class="dot"></span>單倍體世代（1n）— 配子體世代</div>
+          <ul>
+            <li>大、小孢子各自有絲分裂，產生雌、雄配子體</li>
+            <li>雌配子體（胚囊）含卵細胞；雄配子體（花粉粒）含精細胞</li>
+            <li>卵細胞（1n）+ 精細胞（1n）→ 受精 → 合子（2n）→ 回二倍體</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="subsection-title" style="margin-top:20px;">花粉粒的生成</div>
+      <div class="flow" style="flex-wrap:wrap;">
+        <div class="flow-step">小孢子母細胞<br>（花粉母細胞，2n）</div>
+        <div class="flow-arrow">→ 減數分裂</div>
+        <div class="flow-step">4 個小孢子（1n）</div>
+        <div class="flow-arrow">→ 有絲分裂</div>
+        <div class="flow-step">花粉粒（雄配子體，1n）<br>含 2 至多個細胞</div>
+      </div>
+      <div class="info-box" style="margin-top:12px;">
+        <strong>花粉粒特徵：</strong>① 多細胞雄配子體 ② 細胞外側有共同厚壁 ③ 不同植物外部形態差異大，可作為植物分類依據
+      </div>
+
+      <div class="subsection-title" style="margin-top:20px;">授粉方式比較</div>
+      <table class="compare-table">
+        <thead><tr><th>特徵</th><th>蟲媒花</th><th>風媒花</th></tr></thead>
+        <tbody>
+          <tr><td class="label">花瓣顏色</td><td>鮮豔</td><td>淡（不顯眼）</td></tr>
+          <tr><td class="label">花瓣大小</td><td>較大、明顯</td><td>較小、不明顯</td></tr>
+          <tr><td class="label">蜜腺</td><td>大多有</td><td>大多無</td></tr>
+          <tr><td class="label">花粉數量</td><td>較少</td><td>較多</td></tr>
+          <tr><td class="label">花粉形態</td><td>粗糙突起或有黏液</td><td>表面光滑</td></tr>
+          <tr><td class="label">柱頭特徵</td><td>平坦或略突起、有黏性</td><td>常呈羽毛狀、發達</td></tr>
+          <tr><td class="label">舉例</td><td>蘭花、木棉花、玫瑰等</td><td>玉米、芒草等禾草</td></tr>
+        </tbody>
+      </table>
+
+      <div class="subsection-title" style="margin-top:20px;">胚珠的構造與受精</div>
+      <ul class="content-list">
+        <li>胚珠是大孢子發育成雌配子體（胚囊）的位置，也是受精與受精卵發育成胚的位置。</li>
+        <li>外層為<strong>珠被</strong>（多細胞）可保護胚珠；胚珠由孢子體細胞構成，基因型與胚囊不同。</li>
+        <li>胚珠內大孢子母細胞（2n）經減數分裂產生 4 個細胞，3 個退化，1 個存活發育為大孢子（1n）。</li>
+        <li>大孢子有絲分裂 3 次 → 發育為<strong>胚囊（雌配子體）</strong>，共 7 個細胞 8 個核，包含：卵細胞（1n）、中央細胞（具 2 個極核，1n+1n）及其餘 5 個細胞。</li>
+      </ul>
+
+      <div class="subsection-title" style="margin-top:20px;">雙重受精（被子植物特有）</div>
+      <div class="double-fert">
+        <div class="fert-card first">
+          <h4>第一重受精</h4>
+          <p>第 1 個精細胞 + 卵細胞</p>
+          <div class="equation">精細胞 (1n) + 卵細胞 (1n) → 受精卵〔合子〕(2n) → 發育成 <strong>胚</strong></div>
+        </div>
+        <div class="fert-card second">
+          <h4>第二重受精</h4>
+          <p>第 2 個精細胞 + 中央細胞（具 2 個極核）</p>
+          <div class="equation">精細胞 (1n) + 中央細胞 (1n+1n) → 胚乳母細胞 (3n) → 發育成 <strong>胚乳</strong></div>
+        </div>
+      </div>
+      <div class="highlight-box">
+        授粉時，花粉粒落在柱頭上萌發成<strong>花粉管</strong>（管核，雄配子體），生殖細胞有絲分裂產生 2 個精細胞，花粉管朝胚珠方向延伸，將 2 個精細胞送入胚囊中完成雙重受精。
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════ 4-3 種子 ═══════════════ -->
+<div class="section s3" id="s3">
+  <div class="section-header">
+    <div class="section-num">4-3</div>
+    <h2>種子的構造與萌發</h2>
+    <span class="tag">單子葉・雙子葉・萌發過程</span>
+  </div>
+  <div class="section-body">
+
+    <div class="info-box">
+      種子是植物子代在胚胎階段的<strong>暫存形式</strong>，等待適合時間與環境後再萌發，胚乳提供養分支持幼苗初期生長。
+    </div>
+
+    <div class="subsection" id="s3-1">
+      <div class="subsection-title">種子的組成</div>
+      <div class="term-grid">
+        <div class="term">
+          <span class="term-label">種皮</span>
+          <span class="term-desc">由珠被發育而成，位於最外層可保護內部的胚；基因型與母株相同（2n）。</span>
+        </div>
+        <div class="term">
+          <span class="term-label">胚</span>
+          <span class="term-desc">尚未成熟的幼小植物體，由胚芽、胚軸、胚根及子葉組成；為二倍體（2n）。</span>
+        </div>
+        <div class="term">
+          <span class="term-label">胚乳</span>
+          <span class="term-desc">提供胚發育或種子萌發所需的養分；為三倍體（3n）。</span>
+        </div>
+      </div>
+
+      <div class="subsection-title" style="margin-top:18px;">依養分來源分類</div>
+      <div class="seed-compare">
+        <div class="seed-card di">
+          <h4>🌿 雙子葉植物</h4>
+          <p style="font-size:13px;color:#555;margin-bottom:8px;">胚乳提供胚發育早期養分後耗盡，<strong>子葉</strong>為主要養分來源</p>
+          <p style="font-size:13px;"><strong>例：</strong>黃豆、蓖麻</p>
+          <ul style="font-size:13px;margin-top:8px;padding-left:16px;color:#555;">
+            <li>種皮、胚乳（早期耗盡）、胚</li>
+            <li>胚由胚芽、胚軸、胚根、子葉組成</li>
+          </ul>
+        </div>
+        <div class="seed-card mono">
+          <h4>🌾 單子葉植物</h4>
+          <p style="font-size:13px;color:#555;margin-bottom:8px;"><strong>胚乳</strong>為主要提供種子萌發養分的構造</p>
+          <p style="font-size:13px;"><strong>例：</strong>玉米、洋蔥</p>
+          <ul style="font-size:13px;margin-top:8px;padding-left:16px;color:#555;">
+            <li>種皮（與果皮癒合）、胚乳（3n，豐富）</li>
+            <li>胚：子葉、胚芽、胚軸、胚根</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <div class="subsection" id="s3-2">
+      <div class="subsection-title">種子萌發成幼苗的三個階段</div>
+
+      <div class="card-grid" style="grid-template-columns:1fr;">
+        <div class="card">
+          <div class="card-title"><span class="dot"></span>① 胚根突出</div>
+          <ul style="padding-left:16px;font-size:13.5px;">
+            <li>初生根自外界吸收水和無機鹽，供應其他部位生長</li>
+            <li>胚根突破種皮，長成初生根</li>
+            <li><strong>軸根系：</strong>初生根繼續發育為主根與支根（如豌豆）</li>
+            <li><strong>鬚根系：</strong>初生根萎縮，由胚軸或莖長出不定根，與支根共構（如玉米）</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-title"><span class="dot"></span>② 胚軸延伸</div>
+          <table class="compare-table" style="margin-top:10px;">
+            <thead><tr><th>延伸方式</th><th>說明</th><th>例子</th></tr></thead>
+            <tbody>
+              <tr>
+                <td class="label">上胚軸延伸</td>
+                <td>胚芽向上長，子葉或胚乳仍在土中</td>
+                <td>豌豆、玉米<br><span class="pill pill-coral">子葉不出土型（地下型）</span></td>
+              </tr>
+              <tr>
+                <td class="label">下胚軸延伸</td>
+                <td>下胚軸呈「弓狀」，將子葉與胚芽一起推出地表</td>
+                <td>黃豆、洋蔥<br><span class="pill pill-green">子葉出土型（地上型）</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card">
+          <div class="card-title"><span class="dot"></span>③ 胚芽生長</div>
+          <ul style="padding-left:16px;font-size:13.5px;">
+            <li>子葉（或胚乳）養分逐漸萎縮</li>
+            <li>幼葉接受陽光後開始進行光合作用，製造養分供幼苗生長</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════ 比較總整理 ═══════════════ -->
+<div class="section" id="compare" style="border-color:#e9c46a;">
+  <div class="section-header" style="background:#fffbe6;border-bottom-color:#e9c46a;">
+    <div class="section-num" style="background:#fff3cd;color:#7c5200;">≡</div>
+    <h2>無性生殖 vs 有性生殖 比較表</h2>
+    <span class="tag" style="background:#fff3cd;color:#7c5200;">重點整合</span>
+  </div>
+  <div class="section-body">
+    <table class="compare-table">
+      <thead>
+        <tr><th>比較項目</th><th>無性生殖</th><th>有性生殖</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="label">定義</td><td>直接利用營養器官繁殖，不需精、卵結合</td><td>精、卵結合（受精作用）</td></tr>
+        <tr><td class="label">常見方式</td><td>扦插、嫁接、走莖、塊莖、塊根等</td><td>被子植物產生花粉，授粉後產生種子繁殖</td></tr>
+        <tr><td class="label">遺傳變異</td><td>無（遺傳與親代完全相同）</td><td>有（減數分裂基因重組 + 受精作用）</td></tr>
+        <tr><td class="label">繁殖速度</td><td>快；能大量產生子代</td><td>較慢</td></tr>
+        <tr><td class="label">環境適應</td><td>對特定環境適應性較低</td><td>可適應環境變化，適應性強</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+</main>
+
+<footer>
+  選修生物 II ・ 第 4 章 植物的生殖 ・ 重點整理 ｜ 互動式教學講義
+</footer>
+
+</body>
+</html>
